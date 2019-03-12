@@ -537,6 +537,9 @@ int getModemStackStatusResponse(int slotId,
                                 int responseType, int serial, RIL_Errno e,
                                 void *response, size_t responselen);
 
+int enableModemResponse(int slotId, int responseType, int serial, RIL_Errno e,
+                                void *response, size_t responselen);
+
 int setAllowedCarriersResponse(int slotId,
                               int responseType, int serial, RIL_Errno e,
                               void *response, size_t responselen);
@@ -760,6 +763,20 @@ int emergencyDialResponse(int slotId,
 int carrierInfoForImsiEncryption(int slotId,
                         int responseType, int serial, RIL_Errno e,
                         void *response, size_t responseLen);
+
+int setSystemSelectionChannelsResponse(int slotId,
+                               int responseType, int serial, RIL_Errno e,
+                               void *response, size_t responseLen);
+
+int setAllowedCarriersResponse4(int slotId,
+                                int responseType, int serial, RIL_Errno e,
+                                void *response,
+                                size_t responselen);
+
+int getAllowedCarriersResponse4(int slotId,
+                                int responseType, int serial, RIL_Errno e,
+                                void *response,
+                                size_t responselen);
 
 pthread_rwlock_t * getRadioServiceRwlock(int slotId);
 
