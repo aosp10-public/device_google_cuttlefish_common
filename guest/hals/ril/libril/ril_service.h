@@ -203,6 +203,10 @@ int startNetworkScanResponse(int slotId,
                              int responseType, int serial, RIL_Errno e, void *response,
                              size_t responselen);
 
+int startNetworkScanResponse4(int slotId,
+                             int responseType, int serial, RIL_Errno e, void *response,
+                             size_t responselen);
+
 int stopNetworkScanResponse(int slotId,
                             int responseType, int serial, RIL_Errno e, void *response,
                             size_t responselen);
@@ -280,6 +284,14 @@ int setPreferredNetworkTypeResponse(int slotId,
                                    size_t responselen);
 
 int getPreferredNetworkTypeResponse(int slotId,
+                                   int responseType, int serial, RIL_Errno e, void *response,
+                                   size_t responselen);
+
+int setPreferredNetworkTypeBitmapResponse(int slotId,
+                                   int responseType, int serial, RIL_Errno e, void *response,
+                                   size_t responselen);
+
+int getPreferredNetworkTypeBitmapResponse(int slotId,
                                    int responseType, int serial, RIL_Errno e, void *response,
                                    size_t responselen);
 
@@ -521,6 +533,10 @@ int getModemActivityInfoResponse(int slotId,
                                 int responseType, int serial, RIL_Errno e,
                                 void *response, size_t responselen);
 
+int getModemStackStatusResponse(int slotId,
+                                int responseType, int serial, RIL_Errno e,
+                                void *response, size_t responselen);
+
 int setAllowedCarriersResponse(int slotId,
                               int responseType, int serial, RIL_Errno e,
                               void *response, size_t responselen);
@@ -736,6 +752,10 @@ int sendRequestStringsResponse(int slotId,
 int setCarrierInfoForImsiEncryptionResponse(int slotId,
                                             int responseType, int serial, RIL_Errno e,
                                             void *response, size_t responseLen);
+
+int emergencyDialResponse(int slotId,
+                          int responseType, int serial, RIL_Errno e,
+                          void *response, size_t responselen);
 
 int carrierInfoForImsiEncryption(int slotId,
                         int responseType, int serial, RIL_Errno e,
