@@ -165,3 +165,7 @@
     {RIL_REQUEST_GET_PREFERRED_NETWORK_TYPE_BITMAP, radio_1_4::getPreferredNetworkTypeBitmapResponse},
     {RIL_REQUEST_SET_PREFERRED_NETWORK_TYPE_BITMAP, radio_1_4::setPreferredNetworkTypeBitmapResponse},
     {RIL_REQUEST_EMERGENCY_DIAL, radio_1_4::emergencyDialResponse},
+    {RIL_REQUEST_SET_SYSTEM_SELECTION_CHANNELS, radio_1_4::setSystemSelectionChannelsResponse},
+    {RIL_REQUEST_ENABLE_MODEM, radio_1_4::enableModemResponse},
+    {RIL_REQUEST_SET_CARRIER_RESTRICTIONS_1_4, radio_1_4::setAllowedCarriersResponse4},
+    {RIL_REQUEST_GET_CARRIER_RESTRICTIONS_1_4, radio_1_4::getAllowedCarriersResponse4},
