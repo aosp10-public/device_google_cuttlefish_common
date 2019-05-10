@@ -124,7 +124,7 @@ DEFINE_string(socket_forward_proxy_binary,
 DEFINE_string(socket_vsock_proxy_binary,
               vsoc::DefaultHostArtifactsPath("bin/socket_vsock_proxy"),
               "Location of the socket_vsock_proxy binary.");
-DEFINE_string(adb_mode, "",
+DEFINE_string(adb_mode, "vsock_half_tunnel",
               "Mode for ADB connection. Can be 'usb' for USB forwarding, "
               "'tunnel' for a TCP connection tunneled through VSoC, "
               "'vsock_tunnel' for a TCP connection tunneled through vsock, "
@@ -248,6 +248,9 @@ bool InitializeCuttlefishConfiguration(
     return false;
   }
   tmp_config_obj.set_vm_manager(FLAGS_vm_manager);
+
+  // TODO(b/77276633): This should be handled as part of the GPU configuration
+  tmp_config_obj.add_kernel_cmdline("androidboot.hardware.egl=swiftshader");
 
   tmp_config_obj.set_serial_number(FLAGS_serial_number);
 
@@ -472,8 +475,6 @@ void SetDefaultFlagsForQemu() {
                                google::FlagSettingMode::SET_FLAGS_DEFAULT);
   SetCommandLineOptionWithMode("hardware_name", "cutf_ivsh",
                                google::FlagSettingMode::SET_FLAGS_DEFAULT);
-  SetCommandLineOptionWithMode("adb_mode", "tunnel",
-                               google::FlagSettingMode::SET_FLAGS_DEFAULT);
   SetCommandLineOptionWithMode("decompress_kernel", "false",
                                google::FlagSettingMode::SET_FLAGS_DEFAULT);
   SetCommandLineOptionWithMode("logcat_mode", cvd::kLogcatSerialMode,
@@ -499,8 +500,6 @@ void SetDefaultFlagsForCrosvm() {
                                default_instance_dir.c_str(),
                                google::FlagSettingMode::SET_FLAGS_DEFAULT);
   SetCommandLineOptionWithMode("hardware_name", "cutf_cvm",
-                               google::FlagSettingMode::SET_FLAGS_DEFAULT);
-  SetCommandLineOptionWithMode("adb_mode", "vsock_tunnel",
                                google::FlagSettingMode::SET_FLAGS_DEFAULT);
   SetCommandLineOptionWithMode("decompress_kernel", "true",
                                google::FlagSettingMode::SET_FLAGS_DEFAULT);
