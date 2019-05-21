@@ -100,13 +100,13 @@ bool AdbUsbEnabled(const vsoc::CuttlefishConfig& config) {
 
 void ValidateAdbModeFlag(const vsoc::CuttlefishConfig& config) {
   if (!AdbUsbEnabled(config) && !AdbTunnelEnabled(config)
-      && !AdbVsockTunnelEnabled(config)) {
+      && !AdbVsockTunnelEnabled(config) && !AdbVsockHalfTunnelEnabled(config)) {
     LOG(INFO) << "ADB not enabled";
   }
 }
 
 cvd::Command GetIvServerCommand(const vsoc::CuttlefishConfig& config) {
-  // Resize gralloc region
+  // Resize screen region
   auto actual_width = cvd::AlignToPowerOf2(config.x_res() * 4, 4);// align to 16
   uint32_t screen_buffers_size =
       config.num_screen_buffers() *
